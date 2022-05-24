@@ -24,13 +24,13 @@ class BookResults extends React.Component {
       <>
         <Carousel>
           {bookData.map((displayedBook, idx) => (
-            <Carousel.Item  interval={1500} key={idx} >
+            <Carousel.Item interval={1500} key={idx} >
               <Carousel.Caption>
                 <div>{displayedBook.title}</div>
                 <div>{displayedBook.description}</div>
                 <div>{displayedBook.status}</div>
               </Carousel.Caption>
-                <img src='https://pngimg.com/uploads/book/book_PNG2118.png' alt={this.props.bookData.title}></img>
+                <img src='https://media.istockphoto.com/photos/composition-with-books-on-the-table-picture-id1158413597?k=20&m=1158413597&s=612x612&w=0&h=NYk7P4GACfJ51tXQd3kLUrFski-z-Ykn1tZRWSlCcow=' alt={this.props.bookData.title}></img>
             </Carousel.Item>
           ))}
           ;
