@@ -103,3 +103,8 @@ We will do our best to understand that we are at different points of understandi
 
 ## Time Estimates 
 
+### 2) Add Create and Delete
+Estimate of time needed to complete: 3 hours
+Start time: 1:30
+Finish time: 4:00
+Actual time needed to complete: 2:30 hours
