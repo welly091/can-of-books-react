@@ -18,7 +18,7 @@ class BestBooks extends React.Component {
     try {
       let results = await axios.get(`${SERVER}/books`);
       this.setState({
-        books: results.data,
+        books: results.data
       });
     } catch (error) {
       console.log('We have an error: ', error.response.data);
@@ -31,11 +31,11 @@ class BestBooks extends React.Component {
 
   render() {
     /* TODO: render all the books in a Carousel */
-
+    
     return (
       <>
         <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
-
+        
         {this.state.books.length !== 0 ? (
           <BookResults bookData={this.state.books} />
         ) : (
