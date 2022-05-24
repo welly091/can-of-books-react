@@ -1,22 +1,41 @@
 import React from 'react';
-import Carousel from '../node_modules/react-bootstrap/Carousel';
+import {Carousel} from 'react-bootstrap';
 
 class BookResults extends React.Component {
+
+  constructor(props){
+    super(props)
+    this.state={
+      bookData:[]
+    }
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    return {
+        bookData: props.bookData
+    }
+}
+
+
   render() {
+    const{bookData} = this.state
+    console.log(bookData)
     return (
       <>
         <Carousel>
-          {this.props.bookData.map((displayedBook, idx) => (
-            <Carousel.Item interval={1500}>
+          {bookData.map((displayedBook, idx) => (
+            <Carousel.Item interval={1500} key={idx} >
               <Carousel.Caption>
-                <h3>{this.props.bookData.title}</h3>
-                <p>{this.props.bookData.description}</p>
-                <h3>{this.props.bookData.status}</h3>
+                <div>{displayedBook.title}</div>
+                <div>{displayedBook.description}</div>
+                <div>{displayedBook.status}</div>
               </Carousel.Caption>
+                <img src='https://media.istockphoto.com/photos/composition-with-books-on-the-table-picture-id1158413597?k=20&m=1158413597&s=612x612&w=0&h=NYk7P4GACfJ51tXQd3kLUrFski-z-Ykn1tZRWSlCcow=' alt={this.props.bookData.title}></img>
             </Carousel.Item>
           ))}
           ;
         </Carousel>
+        <div>{this.props.bookData.title}</div>
       </>
     );
   }
