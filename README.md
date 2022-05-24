@@ -1,6 +1,45 @@
-# "Can of Books" App
+# Can of Books App
 
-## Collaborators: Dylan Ullrich and Yu-Wei Hsieh
+**Author**: Team Member Names Goes Here
+**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+
+## Overview
+
+Can of Books.
+
+## Getting Started
+<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+
+## Architecture
+
+## Change Log
+
+## Estimates
+
+### 1) Book Component
+
+Estimate of time needed to complete: 1.5 hours
+Start time: 4:10
+Finish time: 5:20
+Actual time needed to complete: 1 hour 2 mins
+
+### 2) ---------
+
+Estimate of time needed to complete: 
+Start time: 
+Finish time: 
+Actual time needed to complete: 
+
+### 3) --------
+
+Estimate of time needed to complete: 
+Start time:
+Finish time: 
+Actual time needed to complete: 
+
+## Credit and Collaborations
+
+Collaborators: Dylan Ullrich and Yu-Wei Hsieh
 
 ## What can books do?
 
@@ -61,3 +100,6 @@ We will call for a discussion to determine how we can contribute to the project 
 - How will you approach each other and the challenge of building an application knowing that it is impossible for two people to be at the exact same place in understanding and skill level?
 
 We will do our best to understand that we are at different points of understanding, and we will do our best to help each other understand subjects that we would like to brush up on.
+
+## Time Estimates 
+
