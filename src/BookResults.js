@@ -1,16 +1,15 @@
 import React from 'react';
-import { Carousel } from 'react-bootstrap';
+import { Button, Carousel, ListGroup } from 'react-bootstrap';
 import './BookResults.css';
 
 class BookResults extends React.Component {
   render() {
     const { bookData } = this.props;
-    console.log(bookData);
     return (
       <>
         <Carousel>
           {bookData.map((displayedBook, idx) => (
-            <Carousel.Item interval={1500} key={idx}>
+            <Carousel.Item interval={1500} key={displayedBook._id}>
               <Carousel.Caption>
                 <div>{displayedBook.title}</div>
                 <div>{displayedBook.description}</div>
@@ -23,9 +22,26 @@ class BookResults extends React.Component {
             </Carousel.Item>
           ))}
         </Carousel>
-        <div>{this.props.bookData.title}</div>
+        <ListGroup>
+          {bookData.map((displayedBook) =>(
+            <BookItem displayedBook={displayedBook} deleteBook={this.props.deleteBook} key={displayedBook._id}></BookItem>
+          ))}
+        </ListGroup>
       </>
     );
+  }
+}
+
+class BookItem extends React.Component{
+
+  handleDelete = () =>{
+    this.props.deleteBook(this.props.displayedBook._id)
+  }
+
+  render(){
+    return (
+      <ListGroup.Item variant="dark" onClick={this.handleDelete}>{this.props.displayedBook.title} <Button type='submit'>Delete</Button></ListGroup.Item>
+    )
   }
 }
 
