@@ -1,11 +1,10 @@
-import { Component } from "react";
+import React from 'react';
 
-class Profile extends Component {
-
+class About extends React.Component {
   render() {
     /* TODO: render information about the developers */
-    return <p>Profile page coming soon</p>
+    return <p>Developers: Dylan and Yu-Wei</p>;
   }
-};
+}
 
-export default Profile;
+export default About;
