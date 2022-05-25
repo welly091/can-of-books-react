@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Carousel, ListGroup } from 'react-bootstrap';
 import './BookResults.css';
+import UpdateBookModal from './UpdateBookModal/UpdateBookModal';
 
 class BookResults extends React.Component {
   render() {
@@ -24,7 +25,7 @@ class BookResults extends React.Component {
         </Carousel>
         <ListGroup>
           {bookData.map((displayedBook) =>(
-            <BookItem displayedBook={displayedBook} deleteBook={this.props.deleteBook} key={displayedBook._id}></BookItem>
+            <BookItem displayedBook={displayedBook} deleteBook={this.props.deleteBook} key={displayedBook._id} updateBook={this.props.updateBook}></BookItem>
           ))}
         </ListGroup>
       </>
@@ -34,13 +35,18 @@ class BookResults extends React.Component {
 
 class BookItem extends React.Component{
 
-  handleDelete = () =>{
-    this.props.deleteBook(this.props.displayedBook._id)
-  }
+  // handleDelete = () =>{
+  //   this.props.deleteBook(this.props.displayedBook._id)
+  // }
 
   render(){
     return (
-      <ListGroup.Item variant="dark" onClick={this.handleDelete}>{this.props.displayedBook.title} <Button type='submit'>Delete</Button></ListGroup.Item>
+      <>
+        <ListGroup.Item variant="dark" >{this.props.displayedBook.title} 
+          <Button type='submit' onClick={() => this.props.deleteBook(this.props.displayedBook._id)}>Delete</Button>
+          <UpdateBookModal updateBook={this.props.updateBook} displayedBook={this.props.displayedBook}>Update</UpdateBookModal>
+        </ListGroup.Item>
+      </>
     )
   }
 }
