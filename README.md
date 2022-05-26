@@ -30,12 +30,12 @@ Start time: 1:30
 Finish time: 4:00
 Actual time needed to complete: 2:30 hours
 
-### 3) --------
+### 3) Put
 
-Estimate of time needed to complete: 
-Start time:
-Finish time: 
-Actual time needed to complete: 
+Estimate of time needed to complete: 1.5
+Start time: 1:35
+Finish time: 4:10
+Actual time needed to complete: 2 hour 25 mins
 
 ## Credit and Collaborations
 
@@ -100,11 +100,3 @@ We will call for a discussion to determine how we can contribute to the project 
 - How will you approach each other and the challenge of building an application knowing that it is impossible for two people to be at the exact same place in understanding and skill level?
 
 We will do our best to understand that we are at different points of understanding, and we will do our best to help each other understand subjects that we would like to brush up on.
-
-## Time Estimates 
-
-### 2) Add Create and Delete
-Estimate of time needed to complete: 3 hours
-Start time: 1:30
-Finish time: 4:00
-Actual time needed to complete: 2:30 hours
