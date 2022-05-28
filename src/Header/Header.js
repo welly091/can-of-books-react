@@ -1,6 +1,9 @@
 import React from 'react';
 import { Navbar, NavItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import LoginButton from './LoginButton';
+import LogoutButton from './LogoutButton';
+import {withAuth0} from "@auth0/auth0-react";
 
 class Header extends React.Component {
   render() {
@@ -17,10 +20,22 @@ class Header extends React.Component {
             About
           </Link>
         </NavItem>
+        {
+          this.props.auth0.isAuthenticated ? (
+          <>
+          <NavItem>
+            <Link to="/profile" className="nav-link">Profile</Link>
+          </NavItem>
+          <NavItem>
+            <LogoutButton/>
+          </NavItem>
+          </>): <NavItem><LoginButton/></NavItem>
+        }
+        
         {/* PLACEHOLDER: render a navigation link to the about page */}
       </Navbar>
     );
   }
 }
 
-export default Header;
+export default withAuth0(Header);

@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import BookResults from '../BookResults/BookResults.js';
+import {withAuth0} from "@auth0/auth0-react";
 
 const SERVER = process.env.REACT_APP_SERVER;
 
@@ -15,13 +16,19 @@ class BestBooks extends React.Component {
   /* TODO: Make a GET request to your API to fetch all the books from the database  */
 
   getBooks = async () => {
-    try {
-      let results = await axios.get(`${SERVER}/books`);
-      this.setState({
-        books: results.data
-      });
-    } catch (error) {
-      console.log('We have an error: ', error.response.data);
+    if(this.props.auth0.isAuthenticated){
+      const res = await this.props.auth0.getIdTokenClaims();
+      const jwt = res.__raw;
+      console.log(jwt);
+    
+      try {
+        let results = await axios.get(`${SERVER}/books`);
+        this.setState({
+          books: results.data
+        });
+      } catch (error) {
+        console.log('We have an error: ', error.response.data);
+      }
     }
   };
 
@@ -61,16 +68,24 @@ class BestBooks extends React.Component {
     
     return (
       <>
-        <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
+      {
+        this.props.auth0.isAuthenticated ? 
+        (
+        <>
+          <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
+          
+          {this.state.books.length !== 0 ? (
+            <BookResults bookData={this.state.books} deleteBook={this.handleDeleteBook} updateBook={this.handleUpdateBook}/>
+          ) : (
+            <h3>No Books Found :(</h3>
+          )}
+        </>
+        ) : <h2>Welcome</h2>
+      }
         
-        {this.state.books.length !== 0 ? (
-          <BookResults bookData={this.state.books} deleteBook={this.handleDeleteBook} updateBook={this.handleUpdateBook}/>
-        ) : (
-          <h3>No Books Found :(</h3>
-        )}
       </>
     );
   }
 }
 
-export default BestBooks;
+export default withAuth0(BestBooks);

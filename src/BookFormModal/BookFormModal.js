@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import {Form, Button, Modal} from 'react-bootstrap'
+import {withAuth0} from "@auth0/auth0-react";
 
-export default class BookFormModal extends Component {
+class BookFormModal extends Component {
     constructor(props){
         super(props)
         this.state ={
@@ -23,31 +24,38 @@ export default class BookFormModal extends Component {
     render() {
     return (
         <>
-        <Button onClick={this.handelShow}>
-            Add a book!
-        </Button>
-        <Modal show={this.state.isShow} onHide={this.handelShow}>
-            <Form onSubmit={this.handleSubmit}>
-            <Modal.Header closeButton>
-                <Modal.Title>Enter the book title</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <Form.Group className="m-4" controlId='formBookTitle'>
-                    <Form.Label>Book title</Form.Label>
-                    <Form.Control type="text"></Form.Control>
-                </Form.Group>
-                <Form.Group className="m-4" controlId='formBookDes'>
-                    <Form.Label>Book Description</Form.Label>
-                    <Form.Control type="text"></Form.Control>
-                </Form.Group>
-            </Modal.Body>
-            <Modal.Footer>
-                <Button onClick={this.handelShow}>Close</Button>
-                <Button type='submit'>Add book</Button>
-            </Modal.Footer>
-            </Form>
-        </Modal>
+        {
+        this.props.auth0.isAuthenticated ? (
+        <>
+            <Button onClick={this.handelShow}>
+                Add a book!
+            </Button>
+            <Modal show={this.state.isShow} onHide={this.handelShow}>
+                <Form onSubmit={this.handleSubmit}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Enter the book title</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form.Group className="m-4" controlId='formBookTitle'>
+                        <Form.Label>Book title</Form.Label>
+                        <Form.Control type="text"></Form.Control>
+                    </Form.Group>
+                    <Form.Group className="m-4" controlId='formBookDes'>
+                        <Form.Label>Book Description</Form.Label>
+                        <Form.Control type="text"></Form.Control>
+                    </Form.Group>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button onClick={this.handelShow}>Close</Button>
+                    <Button type='submit'>Add book</Button>
+                </Modal.Footer>
+                </Form>
+            </Modal> 
+        </>) : <></>
+        }
         </>
-    )
+        )
     }
 }
+
+export default withAuth0(BookFormModal)

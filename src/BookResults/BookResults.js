@@ -35,10 +35,6 @@ class BookResults extends React.Component {
 
 class BookItem extends React.Component{
 
-  // handleDelete = () =>{
-  //   this.props.deleteBook(this.props.displayedBook._id)
-  // }
-
   render(){
     return (
       <>

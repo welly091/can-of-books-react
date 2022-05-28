@@ -4,9 +4,11 @@ import Footer from './Footer/Footer';
 import BestBooks from './BestBooks/BestBooks.js';
 import About from './About/About';
 import BookFormModal from './BookFormModal/BookFormModal';
+import Profile from './BookResults/Profile';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import axios from 'axios';
+import {withAuth0} from "@auth0/auth0-react";
 
 
 class App extends React.Component {
@@ -44,6 +46,13 @@ class App extends React.Component {
               <Route exact path="/about">
                 <About />
               </Route>
+              {
+                this.props.auth0.isAuthenticated ? (
+                  <Route exact path="/profile">
+                    <Profile/>
+                  </Route>
+                ) : <></>
+              }
             </Switch>
 
             <BookFormModal onCreate={this.handleCreateBook}/>
@@ -54,4 +63,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withAuth0(App);
